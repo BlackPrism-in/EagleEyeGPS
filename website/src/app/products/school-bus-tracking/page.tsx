@@ -5,7 +5,12 @@ import LeadBanner from "@/components/LeadBanner";
 import ProductHero from "@/components/ProductHero";
 import SmartBusTiers from "@/components/SmartBusTiers";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
-import { schoolPackageBadge, schoolUpgrades, smartbusLite, smartbusPremium } from "@/data/schoolbus";
+import {
+  schoolPackageBadge,
+  schoolUpgrades,
+  smartbusLite,
+  smartbusPremium,
+} from "@/data/schoolbus";
 
 export const metadata: Metadata = {
   title: "School Bus Tracking Solution — SmartBus Lite & Premium",
@@ -35,13 +40,18 @@ export default function Page() {
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink-900 text-balance">
               Dedicated apps for School Managers, Parents and Drivers
             </h2>
-            <p className="mt-4 text-ink-600/80">
-              Every stakeholder sees exactly what they need — a live command dashboard for the school, live ETA and
-              boarding alerts for parents, and trip navigation with attendance for drivers and attendants.
+            <p className="mt-4 text-ink-600">
+              Every stakeholder sees exactly what they need — a live command
+              dashboard for the school, live ETA and boarding alerts for
+              parents, and trip navigation with attendance for drivers and
+              attendants.
             </p>
             <div className="mt-6 grid grid-cols-3 gap-3 text-center">
               {["Manager App", "Parent App", "Driver App"].map((a) => (
-                <div key={a} className="rounded-2xl bg-brand-50 px-2 py-4 text-sm font-bold text-brand-800">
+                <div
+                  key={a}
+                  className="rounded-2xl bg-brand-50 px-2 py-4 text-sm font-bold text-brand-800"
+                >
                   {a}
                 </div>
               ))}
@@ -83,8 +93,8 @@ export default function Page() {
               Watch how SmartBus keeps every journey safe
             </h2>
             <p className="mt-4 text-white/70">
-              Live tracking, route optimisation, RFID &amp; QR attendance, live in-bus cameras and 100+ reports — in a
-              quick product walkthrough.
+              Live tracking, route optimisation, RFID &amp; QR attendance, live
+              in-bus cameras and 100+ reports — in a quick product walkthrough.
             </p>
             <p className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-400">
               <PlayCircle className="h-5 w-5" /> 3:47 min walkthrough
@@ -116,18 +126,25 @@ export default function Page() {
                 <h2 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
                   Shared School Bus Hardware Upgrades
                 </h2>
-                <p className="mt-2 text-ink-600/80">Available for both SmartBus Lite &amp; SmartBus Premium.</p>
+                <p className="mt-2 text-ink-600">
+                  Available for both SmartBus Lite &amp; SmartBus Premium.
+                </p>
                 <ul className="mt-8 space-y-4">
                   {schoolUpgrades.map((u, i) => {
                     const Icon = upgradeIcons[i];
                     return (
-                      <li key={u.title} className="flex gap-4 rounded-2xl bg-ink-900 p-5 text-white">
+                      <li
+                        key={u.title}
+                        className="flex gap-4 rounded-2xl bg-ink-900 p-5 text-white"
+                      >
                         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-ink-950">
                           <Icon className="h-5 w-5" />
                         </span>
                         <div>
                           <h3 className="font-bold">{u.title}</h3>
-                          <p className="mt-1 text-sm leading-relaxed text-white/70">{u.text}</p>
+                          <p className="mt-1 text-sm leading-relaxed text-white/70">
+                            {u.text}
+                          </p>
                         </div>
                       </li>
                     );
@@ -135,15 +152,29 @@ export default function Page() {
                 </ul>
                 <div className="mt-6 flex gap-3 rounded-2xl border-2 border-dashed border-brand-500/60 bg-brand-50 p-5">
                   <PackageCheck className="h-6 w-6 shrink-0 text-brand-700" />
-                  <p className="text-sm font-bold text-brand-900">{schoolPackageBadge}</p>
+                  <p className="text-sm font-bold text-brand-900">
+                    {schoolPackageBadge}
+                  </p>
                 </div>
               </div>
               <div className="grid gap-3">
                 <div className="relative aspect-video overflow-hidden rounded-2xl">
-                  <Image src="/images/dashcam-cabin.jpg" alt="Live in-bus camera view" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+                  <Image
+                    src="/images/dashcam-cabin.jpg"
+                    alt="Live in-bus camera view"
+                    fill
+                    sizes="(min-width:1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="relative aspect-video overflow-hidden rounded-2xl">
-                  <Image src="/images/attendance.jpg" alt="RFID and QR code student attendance" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+                  <Image
+                    src="/images/attendance.jpg"
+                    alt="RFID and QR code student attendance"
+                    fill
+                    sizes="(min-width:1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { Check, ChevronRight, ShieldCheck } from "lucide-react";
 import { whatsappLink } from "@/data/site";
 import LeadBanner from "./LeadBanner";
-import { Button, Container, RechargeBadge, WhatsAppIcon } from "./ui";
+import { Button, Container, Eyebrow, RechargeBadge, WhatsAppIcon } from "./ui";
 
-/** Short-form product page used for AIS-140 and Field Employee Tracking until full Phase 2 copy arrives. */
 export default function PhaseTwoPage({
   title,
   headline,
@@ -22,43 +22,67 @@ export default function PhaseTwoPage({
 }) {
   return (
     <>
-      <section className="relative overflow-hidden bg-black text-white">
-        <div className="bg-grid absolute inset-0" aria-hidden />
-        <div className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl" aria-hidden />
-        <Container className="relative grid items-center gap-12 py-16 lg:grid-cols-[1.2fr_1fr] lg:py-24">
+      <section className="page-hero">
+        <Container className="page-hero__layout">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-400">{title}</p>
-            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-5xl">
-              {headline}
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg text-white/70">{text}</p>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {points.map((p) => (
-                <li key={p} className="flex gap-2 text-sm text-white/85">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" strokeWidth={3} /> {p}
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <ChevronRight size={12} />
+              <Link href="/#products">Products</Link>
+              <ChevronRight size={12} />
+              <span aria-current="page">{productName}</span>
+            </nav>
+            <Eyebrow>{title}</Eyebrow>
+            <h1>{headline}</h1>
+            <p className="page-hero__intro">{text}</p>
+            <ul className="phase-features">
+              {points.map((point) => (
+                <li key={point}>
+                  <Check size={17} />
+                  {point}
                 </li>
               ))}
             </ul>
-            <div className="mt-6">
-              <RechargeBadge light>1-Year Recharge Included · Installation &amp; Lifetime Support</RechargeBadge>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="#quote">Enquire Now</Button>
-              <Button href={whatsappLink(`Hi Eagle Eye GPS, I'd like details on ${productName}.`)} variant="whatsapp">
-                <WhatsAppIcon /> WhatsApp Us
+            <RechargeBadge>
+              1-year recharge · Installation · Lifetime support
+            </RechargeBadge>
+            <div className="page-hero__actions">
+              <Button href="#quote">Let’s find your package</Button>
+              <Button
+                href={whatsappLink(
+                  `Hi Eagle Eye GPS, I'd like details on ${productName}.`,
+                )}
+                variant="outline"
+              >
+                <WhatsAppIcon className="h-4 w-4" /> Talk to our team
               </Button>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-sm">
-            <Image src={image} alt={title} width={480} height={480} className="w-full mix-blend-lighten" priority />
+          <div className="page-hero__visual">
+            <div className="page-hero__image">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                priority
+                sizes="(min-width: 900px) 40vw, 100vw"
+                className="object-contain p-12"
+              />
+            </div>
+            <div className="page-hero__visual-label">
+              <ShieldCheck size={16} /> Hardware, software &amp; support.
+              Together.
+            </div>
           </div>
         </Container>
       </section>
-      <LeadBanner
-        title={`Enquire about ${productName}`}
-        intro="Share your requirement and our team will send full specifications and pricing directly."
-        defaultProduct={productName}
-      />
+      <div className="pt-16">
+        <LeadBanner
+          title={`Let’s talk ${productName.toLowerCase()}.`}
+          intro="Share your requirements. Our team will help you with specifications, availability and pricing."
+          defaultProduct={productName}
+        />
+      </div>
     </>
   );
 }

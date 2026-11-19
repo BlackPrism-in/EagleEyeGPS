@@ -15,7 +15,8 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Eagle Eye GPS — GPS Tracking, Video Telematics & Fleet Solutions | Siliguri",
+    default:
+      "Eagle Eye GPS — GPS Tracking, Video Telematics & Fleet Solutions | Siliguri",
     template: "%s | Eagle Eye GPS",
   },
   description:
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f97316",
+  themeColor: "#202c2f",
 };
 
 const jsonLd = {
@@ -63,13 +64,18 @@ const jsonLd = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-IN" className={jakarta.variable}>
       <body className="font-sans">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

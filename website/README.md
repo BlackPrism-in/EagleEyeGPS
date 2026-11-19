@@ -1,54 +1,57 @@
-# Eagle Eye GPS — Website (Phase 1)
+# Eagle Eye GPS — Website
 
-Marketing site for **Eagle Eye GPS (Omesh Automation)**, built from the client's
-*Website Layout & Phase 1 Copy Deck*.
-
-Designed & built by **[BlackPrism](https://blackprism.in)**.
-
-**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · lucide-react · Deploy on Vercel
+Marketing website for **Eagle Eye GPS (Omesh Automation)**, based in Siliguri.
+Built with Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4 and lucide-react. Hosted on Vercel.
 
 ## Run locally
 
+Use Node.js 22 LTS and npm. Run these commands from this `website` directory:
+
 ```bash
-npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build (all pages are statically generated)
+npm ci
+npm run dev
 ```
 
-## Routes
+Open [http://localhost:3000](http://localhost:3000). To check the production build:
 
-| Route | Page |
-| --- | --- |
-| `/` | Homepage — 7 blocks (hero, trust strip, product grid, dashcam spotlight, why choose, industries, lead form) |
-| `/products/personal-vehicle-tracking` | Product 1 |
-| `/products/advance-fleet-management` | Product 2 |
-| `/products/school-bus-tracking` | Product 3 — SmartBus Lite / Premium tabs, promo video, shared upgrades |
-| `/products/ais-140-trackers` | Phase 2 placeholder (Mercyda Track & Pauldea Tracker) |
-| `/products/field-employee-tracking` | Phase 2 "Coming Soon" |
-| `/solutions` | Industries We Serve (7 verticals, anchor-linked) |
-| `/about`, `/contact` | Company + contact/map |
+```bash
+npm run build
+npm start
+```
 
-## Where to edit content
+## Pages
 
-All copy lives in `src/data/` — no need to touch components for text changes:
+| Route                                 | Content                                                                                                                 |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `/`                                   | Interactive tracking preview, product discovery, app showcase, dashcam preview, industries, setup, FAQ and enquiry form |
+| `/products/personal-vehicle-tracking` | Personal vehicle tracking features and optional dashcam upgrade                                                         |
+| `/products/advance-fleet-management`  | Fleet management features and optional dashcam upgrade                                                                  |
+| `/products/school-bus-tracking`       | SmartBus Lite / Premium comparison, apps, video and hardware upgrades                                                   |
+| `/products/ais-140-trackers`          | AIS-140 trackers and product enquiry                                                                                    |
+| `/products/field-employee-tracking`   | Field employee tracking and product enquiry                                                                             |
+| `/solutions`                          | Seven industry solutions with direct section links                                                                      |
+| `/about`                              | Company story, mission and approach                                                                                     |
+| `/contact`                            | Contact options, enquiry form and office map                                                                            |
 
-- `site.ts` — phone, WhatsApp, email, address, login URL, nav menu
-- `products.ts` — Personal & Fleet product copy, dashcam blocks, homepage product cards
-- `schoolbus.ts` — SmartBus Lite / Premium features and upgrades
-- `solutions.ts` — industry verticals
+## UI and content
 
-Phase 2: when AIS-140 / Field Employee copy arrives, replace the `PhaseTwoPage` usage in
-`src/app/products/<slug>/page.tsx` with `ProductTemplate` and a new entry in `products.ts`,
-then remove the `badge` from `navProducts` in `site.ts`.
+- `src/app/globals.css`: shared palette, typography, component styles, responsive layouts and reduced-motion support.
+- `src/app/page.tsx`: homepage layout and introductory copy.
+- `src/components/TrackingPreview.tsx`: interactive personal, fleet and school-bus preview. Map, vehicle details and metrics are explicitly illustrative; this is not connected to customer tracking data.
+- `src/components/VideoShowcase.tsx`: road / cabin product image preview.
+- `src/components/SmartBusTiers.tsx`: keyboard-accessible SmartBus plan tabs.
+- `src/components/Faq.tsx`: native FAQ accordions.
+- `src/data/site.ts`: contact details, WhatsApp number, client login URL and navigation.
+- `src/data/products.ts`: product specifications and dashcam feature copy.
+- `src/data/schoolbus.ts`: SmartBus plans and upgrades.
+- `src/data/solutions.ts`: industry descriptions and highlights.
 
-## Lead form
+The existing logo, brochure screenshots, product photos and video remain in `public/`. The promo video loads only when played. No new runtime dependencies are needed for the UI refresh.
 
-`src/components/EnquiryForm.tsx` validates the 4 fields and opens WhatsApp
-(`+91 96355 54473`) with the enquiry pre-filled — no backend required. To also capture leads
-in email/CRM, replace `handleSubmit` with a POST to an API route or form service.
+## Quote form
 
-## Assets
+`src/components/EnquiryForm.tsx` validates the four fields and opens a prepared WhatsApp enquiry to **+91 96355 54473**. Visitors review and send the message in WhatsApp. If a popup is blocked, the confirmation panel provides a direct link to open the prepared message again. No enquiry is submitted to a backend.
 
-Images in `public/images` were taken from the client's brochures (Features, SmartBus Lite,
-SmartBus Premium PDFs) and stills from the SmartBus promo video. `public/video/smartbus-promo.mp4`
-is a web-compressed copy of the supplied WhatsApp video (loaded only on play).
+Product pages preselect the relevant solution. Inputs have associated labels and validation messages, and the first invalid field receives focus.
+
+Originally designed and built by [BlackPrism](https://blackprism.in).

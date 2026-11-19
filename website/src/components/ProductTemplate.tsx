@@ -23,7 +23,11 @@ export default function ProductTemplate({
         imageAlt={product.imageAlt}
         imageClassName={heroImageClassName}
       />
-      <FeatureGrid title={product.featuresTitle} intro={product.featuresIntro} features={product.features} />
+      <FeatureGrid
+        title={product.featuresTitle}
+        intro={product.featuresIntro}
+        features={product.features}
+      />
       <DashcamUpgrade block={product.dashcam} />
       <LeadBanner
         title={`Get a quote for ${product.pageTitle}`}
