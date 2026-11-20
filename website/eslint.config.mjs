@@ -15,6 +15,9 @@ const eslintConfig = [
     ignores: [
       "node_modules/**",
       ".next/**",
+      // iCloud-excluded real folders behind the node_modules/.next symlinks
+      "node_modules.nosync/**",
+      ".next.nosync/**",
       "out/**",
       "build/**",
       "next-env.d.ts",

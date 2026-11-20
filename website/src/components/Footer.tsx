@@ -100,7 +100,11 @@ export default function Footer() {
             rights reserved.
           </p>
           <p>
-            Designed &amp; built by{" "}
+            Designed &amp; built with{" "}
+            <span role="img" aria-label="love">
+              ❤️
+            </span>{" "}
+            by{" "}
             <a
               href="https://blackprism.in"
               target="_blank"
